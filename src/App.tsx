@@ -222,14 +222,14 @@ function SocialSidebar() {
   return (
     <div className="fixed right-0 top-1/2 -translate-y-1/2 z-40 flex flex-col items-end space-y-1">
       <a 
-        href="#" 
+        href="https://www.linkedin.com/in/lcm-cosm%C3%A9tiques" 
         className="group relative w-12 h-12 bg-sage flex items-center justify-center text-white overflow-hidden transition-all duration-500 hover:w-14"
       >
         <div className="absolute inset-0 bg-white translate-x-full group-hover:translate-x-[2px] transition-transform duration-500 ease-out" />
         <Linkedin size={18} className="relative z-10 group-hover:text-sage transition-colors duration-500" />
       </a>
       <a 
-        href="#" 
+        href="https://www.facebook.com/laboratoireLCM" 
         className="group relative w-12 h-12 bg-sage flex items-center justify-center text-white overflow-hidden transition-all duration-500 hover:w-14"
       >
         <div className="absolute inset-0 bg-white translate-x-full group-hover:translate-x-[2px] transition-transform duration-500 ease-out" />
