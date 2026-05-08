@@ -3,35 +3,43 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { motion, AnimatePresence } from 'framer-motion';
-import { useState, useEffect, type ReactNode } from 'react';
-import { Linkedin, Facebook, Menu, X, Send, Globe, Play, Heart, Trophy, Share2 } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
+import { useState, useEffect, useRef, type ReactNode } from 'react';
+import { Linkedin, Facebook, Menu, X, ChevronRight, Send, Globe, Play, Search, Share2, Trophy, Heart } from 'lucide-react';
 import ReactQuill from 'react-quill-new';
 import 'react-quill-new/dist/quill.snow.css';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import { translations, Translation } from './translations';
 import LegalPage from './pages/LegalPage';
 import ExpertisePage from './pages/ExpertisePage';
 import Footer from './components/Footer';
+import heroImage from './assets/images/regenerated_image_1778161507434.jpg';
+import brandLogo1 from './assets/images/cropped-arsenevalere_logo-sansfond.png';
+import brandLogo2 from './assets/images/logo_nd.png';
+import brandLogo3 from './assets/images/csp_limoges.png';
+import brandLogo4 from './assets/images/usal_limoges.png';
+import labResearchImage from './assets/images/regenerated_image_177816135574811.jpg';
+import brandHero1 from './assets/images/3.jpg';
+import brandHero2 from './assets/images/4.jpg';
 
-// Placeholder images for deleted assets
+// Images from Unsplash - Luxury Scents/Cosmetics vibe
 const IMAGES = {
-  hero: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?auto=format&fit=crop&q=80&w=1000",
+  hero: heroImage,
   wax: "https://images.unsplash.com/photo-1612817288484-6f916006741a?auto=format&fit=crop&q=80&w=1000",
   care: "https://images.unsplash.com/photo-1570172619380-28243a845839?auto=format&fit=crop&q=80&w=1000",
   dev: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1000",
-  brand1: "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&q=80&w=1000",
-  brand2: "https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&q=80&w=1000",
+  brand1: brandHero1,
+  brand2: brandHero2,
   brand3: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=1000",
-  lab: "https://images.unsplash.com/photo-1582719202047-76d3432ee323?auto=format&fit=crop&q=80&w=1000",
-  popup: "https://images.unsplash.com/photo-1570172619380-28243a845839?auto=format&fit=crop&q=80&w=1000",
+  lab: labResearchImage,
+  popup: labResearchImage,
 };
 
 const LOGOS = [
-  { name: "Arsène Valère", url: "https://via.placeholder.com/150x50?text=Arsene+Valere" },
-  { name: "Norma de Durville", url: "https://via.placeholder.com/150x50?text=Norma+de+Durville" },
-  { name: "Limoges CSP", url: "https://via.placeholder.com/150x50?text=Limoges+CSP" },
-  { name: "USAL Rugby", url: "https://via.placeholder.com/150x50?text=USAL+Rugby" }
+  { name: "Arsène Valère", url: brandLogo1 },
+  { name: "Norma de Durville", url: brandLogo2 },
+  { name: "Limoges CSP", url: brandLogo3 },
+  { name: "USAL Rugby", url: brandLogo4 }
 ];
 
 export default function App() {
@@ -161,7 +169,9 @@ function Navbar({ lang, toggleLang, isScrolled, t }: { lang: string, toggleLang:
               {t.nav[item as keyof typeof t.nav]}
             </a>
           ))}
+          <a href="#" className="hover:text-white transition-colors">Resources</a>
           <Link to="/expertise" className="hover:text-white transition-colors">Enterprise</Link>
+          <a href="#" className="hover:text-white transition-colors">Pricing</a>
         </div>
 
         {/* Right Side Tools */}
