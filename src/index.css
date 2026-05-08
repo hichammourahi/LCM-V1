@@ -1,44 +1,36 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
-@import "tailwindcss";
-
-@theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "Playfair Display", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  
-  --color-sage: #7f9866;
-  --color-sage-light: #f4f6f2;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @layer base {
+  :root {
+    --color-sage: #94a684;
+  }
   html {
     scroll-behavior: smooth;
   }
   
   body {
-    @apply bg-white text-gray-900 font-sans antialiased selection:bg-sage selection:text-white;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-serif;
+    @apply bg-white text-gray-900 antialiased overflow-x-hidden;
   }
 }
 
-.glass {
-  @apply bg-white/10 backdrop-blur-md border border-white/20;
+.brand-portal-arsene {
+  --brand-accent: #111827;
 }
 
-.glass-dark {
-  @apply bg-black/20 backdrop-blur-lg border border-white/10;
+.brand-portal-elixir {
+  --brand-accent: #c5a059;
 }
 
-.text-gradient {
-  @apply bg-clip-text text-transparent bg-linear-to-r from-gray-900 to-sage;
+.brand-portal-purete {
+  --brand-accent: #94a684;
 }
 
 .horizontal-marquee-loop {
   display: flex;
-  width: max-content;
-  animation: marquee 30s linear infinite;
+  width: fit-content;
+  animation: marquee 40s linear infinite;
 }
 
 @keyframes marquee {
@@ -46,62 +38,15 @@
   100% { transform: translateX(-50%); }
 }
 
-.horizontal-marquee-loop:hover {
-  animation-play-state: paused;
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
 }
 
-/* Brand Portals Moods */
-.brand-portal-dermaly {
-  --portal-accent: #2c3e50;
-  --portal-bg: #f8f9fa;
-  font-family: var(--font-sans);
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
 }
 
-.brand-portal-elixir {
-  --portal-accent: #c5a059;
-  --portal-bg: #1a1a1a;
-  font-family: var(--font-serif);
-}
-
-.brand-portal-purete {
-  --portal-accent: #7f9866;
-  --portal-bg: #f2f4ef;
-  font-family: var(--font-serif);
-}
-
-.portal-text-vertical {
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-}
-
-/* Luxury Quill Styling */
-.luxury-quill .ql-toolbar.ql-snow {
-  @apply border-0 border-b border-gray-100 bg-gray-50/50 py-3;
-}
-
-.luxury-quill .ql-container.ql-snow {
-  @apply border-0 min-h-[150px] font-sans text-sm;
-}
-
-.luxury-quill .ql-editor {
-  @apply px-0 py-4 leading-relaxed;
-}
-
-.luxury-quill .ql-editor.ql-blank::before {
-  @apply left-0 text-gray-300 font-light italic;
-}
-
-.luxury-quill .ql-snow .ql-stroke {
-  @apply stroke-gray-400;
-}
-
-.luxury-quill .ql-snow .ql-fill {
-  @apply fill-gray-400;
-}
-
-.luxury-quill .ql-snow.ql-toolbar button:hover .ql-stroke,
-.luxury-quill .ql-snow.ql-toolbar button:hover .ql-fill,
-.luxury-quill .ql-snow.ql-toolbar button.ql-active .ql-stroke,
-.luxury-quill .ql-snow.ql-toolbar button.ql-active .ql-fill {
-  @apply stroke-sage fill-sage;
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
 }

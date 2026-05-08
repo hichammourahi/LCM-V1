@@ -1,8 +1,3 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
-
 export interface Translation {
   nav: {
     brands: string;
@@ -15,12 +10,10 @@ export interface Translation {
     quote: string;
   };
   hero: {
-    eyebrow: string;
     title: string;
     paragraph: string;
     cta: string;
     secondaryCta: string;
-    badge: string;
     features: string[];
   };
   expertise: {
@@ -69,11 +62,11 @@ export interface Translation {
   contact: {
     title: string;
     subtitle: string;
-    address: string;
     name: string;
     email: string;
     message: string;
     send: string;
+    address: string;
   };
   popup: {
     title: string;
@@ -81,63 +74,45 @@ export interface Translation {
     cta: string;
   };
   footer: {
-    cgv: string;
+    description: string;
+    expertise: string;
     legal: string;
-    privacy: string;
+    rights: string;
+    contact: string;
   };
 }
 
 export const translations: Record<'fr' | 'en', Translation> = {
   fr: {
     nav: {
-      brands: "Nos marques",
+      brands: "Nos Marques",
       expertise: "Expertise",
       lab: "Laboratoire",
       process: "Processus",
       quality: "Qualité",
       partners: "Partenaires",
       contact: "Contact",
-      quote: "Demander un devis",
+      quote: "Devis Gratuit",
     },
     hero: {
-      eyebrow: "Laboratoire de cosmétologie moderne",
-      badge: "Formulation B2B d'exception",
-      title: "Le laboratoire pour donner vie à votre vision beauté.",
-      paragraph: "LCM accompagne les marques, distributeurs et professionnels dans la formulation, la fabrication et le conditionnement de soins et produits cosmétiques.",
-      cta: "Démarrer un projet",
-      secondaryCta: "À PROPOS",
-      features: [
-        "Cire dépilatoire",
-        "Soins visage & corps",
-        "Fabrication française",
-        "R&D sur-mesure",
-        "Logistique premium"
-      ]
+      title: "L'Excellence Cosmétique Française",
+      paragraph: "Depuis 1965, nous concevons et fabriquons des produits de soins et d'épilation haut de gamme pour les professionnels du monde entier.",
+      cta: "Découvrir nos marques",
+      secondaryCta: "Notre expertise",
+      features: ["Fabrication Française", "R&D Innovante", "Qualité Certifiée", "Sur-Mesure"],
     },
     expertise: {
-      title: "LCM, créateur de beauté",
-      subtitle: "Des produits de beauté innovants, naturels ou bio.",
+      title: "Notre Savoir-Faire",
+      subtitle: "Un accompagnement complet de l'idée au produit fini.",
       items: [
-        { 
-          title: "MADE IN FRANCE", 
-          desc: "LCM est une entreprise familiale, forte d'une expérience de plus de 60 ans, nous assurons le développement, la fabrication et le conditionnement de produits cosmétiques, de cires à épiler, de cires naturelles et bio." 
-        },
-        { 
-          title: "INNOVATION", 
-          desc: "Notre laboratoire situé en Haute-vienne, profite d'un environnement naturel pour mettre son expérience et sa technologie au service des professionnels de la beauté. Produits techniques de haute qualité, la performance reste notre priorité." 
-        },
-        { 
-          title: "PRODUITS DE MARQUE", 
-          desc: "Nos clients sont des grands noms de l'industrie cosmétique présents dans le monde entier. C'est pourquoi LCM propose un accompagnement personnalisé aux sociétés qui souhaitent offrir une cosmétique de qualité, conforme aux réglementations." 
-        },
-        { 
-          title: "NOS VALEURS", 
-          desc: "Notre capacité à intégrer l'innovation technique tout en respectant un niveau de qualité en phase avec la demande de la clientèle, nous permet de créer des formules qui répondent à toutes les évolutions relatives au respect de l'environnement et de la santé." 
-        }
-      ]
+        { title: "Made in France", desc: "Tous nos produits sont conçus et fabriqués dans notre laboratoire à Limoges." },
+        { title: "R&D Interne", desc: "Une équipe dédiée à l'innovation botanique et cosmétologique." },
+        { title: "N°1 Cires", desc: "Leader dans la fabrication de cires à épiler professionnelles." },
+        { title: "Eco-Responsable", desc: "Des formulations respectueuses de la peau et de l'environnement." },
+      ],
     },
     brands: {
-      eyebrow: "Trois univers, une expertise.",
+      eyebrow: "L'Univers LCM",
       title: "Nos Marques",
       discover: "Découvrir",
       brand1: { title: "Arsène Valère", atmosphere: "Laboratoire de cosmétologique moderne" },
@@ -147,52 +122,54 @@ export const translations: Record<'fr' | 'en', Translation> = {
     lab: {
       title: "Le Laboratoire",
       features: {
-        rd: { title: "Recherche & Développement", desc: "Innover pour demain." },
-        prod: { title: "Fabrication & conditionnement", desc: "Modernité et rigueur." },
-        reg: { title: "Accompagnement réglementaire", desc: "Expertise et conformité." },
-      }
+        rd: { title: "Recherche & Développement", desc: "Formulation sur mesure et amélioration constante de nos actifs." },
+        prod: { title: "Production", desc: "Capacité industrielle flexible pour petites et grandes séries." },
+        reg: { title: "Réglementation", desc: "Conformité totale aux normes cosmétiques internationales (DIP)." },
+      },
     },
     process: {
-      title: "Processus",
+      title: "Votre Projet en 4 Étapes",
       cards: {
         brief: "Cahier des charges",
-        sample: "Formulation échantillon",
-        validation: "Tests & Validation",
-        production: "Production & Logistique",
-      }
+        sample: "Échantillonnage",
+        validation: "Validation tests",
+        production: "Mise en production",
+      },
     },
     quality: {
-      title: "L'Excellence",
+      title: "L'Exigence au Cœur du Métier",
       stats: {
-        founded: "Depuis 1965",
-        origin: "Made in France",
-        rdFocus: "R&D Intégrée",
-        market: "Expertise B2B",
-      }
+        founded: "Date de création",
+        origin: "Origine Garantie",
+        rdFocus: "Focus Innovation",
+        market: "Secteur",
+      },
     },
     partners: {
-      title: "Nos partenaires",
-      trust: "Approuvé par des entreprises modernes dans de multiples secteurs",
+      title: "Ils nous font confiance",
+      trust: "Nos partenaires sportifs & institutionnels",
     },
     contact: {
       title: "Contactez-nous",
-      subtitle: "Discutons de votre prochain succès cosmétique.",
-      address: "23 Rue Barthélémy Thimonnier – 87280 Limoges",
+      subtitle: "Parlons de votre futur projet cosmétique.",
       name: "Nom complet",
-      email: "Adresse email",
-      message: "Votre projet",
+      email: "Email professionnel",
+      message: "Votre message",
       send: "Envoyer le message",
+      address: "Limoges, France",
     },
     popup: {
-      title: "Un projet ?",
-      subtitle: "Recevez un accompagnement personnalisé. Expliquez-nous votre besoin : formulation, fabrication, conditionnement ou développement d’une gamme cosmétique.",
-      cta: "Envoyer ma demande",
+      title: "Besoin de conseils ?",
+      subtitle: "Nos experts vous accompagnent dans la création de votre gamme cosmétique.",
+      cta: "Discuter avec nous",
     },
     footer: {
-      cgv: "Conditions générales de vente",
-      legal: "Mentions légales",
-      privacy: "Politique de confidentialité / Charte informatique",
-    }
+      description: "Expert en cosmétologie moderne et fabrication de cires professionnelles depuis 1965.",
+      expertise: "Expertise",
+      legal: "Légal",
+      rights: "Tous droits réservés.",
+      contact: "Contact",
+    },
   },
   en: {
     nav: {
@@ -203,47 +180,27 @@ export const translations: Record<'fr' | 'en', Translation> = {
       quality: "Quality",
       partners: "Partners",
       contact: "Contact",
-      quote: "Get a quote",
+      quote: "Free Quote",
     },
     hero: {
-      eyebrow: "Modern cosmetology laboratory",
-      badge: "Exceptional B2B Formulation",
-      title: "The laboratory to bring your beauty vision to life.",
-      paragraph: "LCM supports brands, distributors, and professionals in the formulation, manufacturing, and packaging of high-end skincare and beauty products.",
-      cta: "Start a project",
-      secondaryCta: "ABOUT US",
-      features: [
-        "Depilatory Wax",
-        "Face & Body Care",
-        "Made in France",
-        "Bespoke R&D",
-        "Premium Logistics"
-      ]
+      title: "French Cosmetic Excellence",
+      paragraph: "Since 1965, we have been designing and manufacturing high-end skincare and hair removal products for professionals worldwide.",
+      cta: "Discover our brands",
+      secondaryCta: "Our expertise",
+      features: ["Made in France", "Innovative R&D", "Certified Quality", "Custom-Made"],
     },
     expertise: {
-      title: "LCM, Creator of Beauty",
-      subtitle: "Innovative, natural or organic beauty products.",
+      title: "Our Expertise",
+      subtitle: "Complete support from idea to finished product.",
       items: [
-        { 
-          title: "MADE IN FRANCE", 
-          desc: "LCM is a family business with over 60 years of experience. We ensure the development, manufacturing, and packaging of cosmetic products, hair removal waxes, natural, and organic waxes." 
-        },
-        { 
-          title: "INNOVATION", 
-          desc: "Our laboratory in Haute-vienne benefits from a natural environment to put its experience and technology at the service of beauty professionals. High-quality technical products; performance remains our priority." 
-        },
-        { 
-          title: "BRAND PRODUCTS", 
-          desc: "Our clients are big names in the cosmetic industry worldwide. LCM provides personalized support to companies wishing to offer quality cosmetics compliant with regulations." 
-        },
-        { 
-          title: "OUR VALUES", 
-          desc: "Our ability to integrate technical innovation while maintaining a quality level in phase with customer demand allows us to create formulas responding to all environmental and health evolutions." 
-        }
-      ]
+        { title: "Made in France", desc: "All our products are designed and manufactured in our laboratory in Limoges." },
+        { title: "Internal R&D", desc: "A team dedicated to botanical and cosmetological innovation." },
+        { title: "N°1 Waxes", desc: "Leader in the manufacturing of professional hair removal waxes." },
+        { title: "Eco-Friendly", desc: "Formulations that respect the skin and the environment." },
+      ],
     },
     brands: {
-      eyebrow: "Three universes, one expertise.",
+      eyebrow: "The LCM Universe",
       title: "Our Brands",
       discover: "Discover",
       brand1: { title: "Arsène Valère", atmosphere: "Modern cosmetology laboratory" },
@@ -253,51 +210,53 @@ export const translations: Record<'fr' | 'en', Translation> = {
     lab: {
       title: "The Laboratory",
       features: {
-        rd: { title: "R&D", desc: "Innovating for tomorrow." },
-        prod: { title: "Production & Packaging", desc: "Modernity and precision." },
-        reg: { title: "Regulatory Support", desc: "Expertise and compliance." },
-      }
+        rd: { title: "Research & Development", desc: "Custom formulation and constant improvement of our active ingredients." },
+        prod: { title: "Production", desc: "Flexible industrial capacity for small and large series." },
+        reg: { title: "Regulations", desc: "Total compliance with international cosmetic standards." },
+      },
     },
     process: {
-      title: "Process",
+      title: "Your Project in 4 Steps",
       cards: {
-        brief: "Project Brief",
-        sample: "Sample Formulation",
-        validation: "Testing & Validation",
-        production: "Production & Logistics",
-      }
+        brief: "Briefing",
+        sample: "Sampling",
+        validation: "Test Validation",
+        production: "Production Launch",
+      },
     },
     quality: {
-      title: "Excellence",
+      title: "Excellence at the Heart",
       stats: {
-        founded: "Since 1965",
-        origin: "Made in France",
-        rdFocus: "Integrated R&D",
-        market: "B2B Expertise",
-      }
+        founded: "Founded in",
+        origin: "Guaranteed Origin",
+        rdFocus: "Innovation Focus",
+        market: "Sector",
+      },
     },
     partners: {
-      title: "Our Partners",
-      trust: "Trusted by modern businesses across multiple industries",
+      title: "They Trust Us",
+      trust: "Our sports & institutional partners",
     },
     contact: {
       title: "Contact Us",
-      subtitle: "Let's discuss your next cosmetic success.",
-      address: "23 Rue Barthélémy Thimonnier – 87280 Limoges",
+      subtitle: "Let's talk about your future cosmetic project.",
       name: "Full Name",
-      email: "Email Address",
-      message: "Your project",
+      email: "Professional Email",
+      message: "Your message",
       send: "Send Message",
+      address: "Limoges, France",
     },
     popup: {
-      title: "Have a project?",
-      subtitle: "Receive personalized support. Tell us about your needs: formulation, manufacturing, packaging, or development of a cosmetic range.",
-      cta: "Send Request",
+      title: "Need advice?",
+      subtitle: "Our experts support you in creating your cosmetic range.",
+      cta: "Talk to us",
     },
     footer: {
-      cgv: "General Terms and Conditions",
-      legal: "Legal Notice",
-      privacy: "Privacy Policy / IT Charter",
-    }
-  }
+      description: "Expert in modern cosmetology and professional wax manufacturing since 1965.",
+      expertise: "Expertise",
+      legal: "Legal",
+      rights: "All rights reserved.",
+      contact: "Contact",
+    },
+  },
 };
