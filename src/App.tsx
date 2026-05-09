@@ -13,14 +13,14 @@ import { translations, Translation } from './translations';
 import LegalPage from './pages/LegalPage';
 import ExpertisePage from './pages/ExpertisePage';
 import Footer from './components/Footer';
-import heroImage from './assets/images/regenerated_image_1778161507434.jpg';
+import heroImage from './assets/images/13419.jpg';
 import brandLogo1 from './assets/images/cropped-arsenevalere_logo-sansfond.png';
 import brandLogo2 from './assets/images/logo_nd.png';
 import brandLogo3 from './assets/images/csp_limoges.png';
 import brandLogo4 from './assets/images/usal_limoges.png';
 import labResearchImage from './assets/images/regenerated_image_177816135574811.jpg';
 import brandHero1 from './assets/images/3.jpg';
-import brandHero2 from './assets/images/4.jpg';
+import brandHero2 from './assets/images/Logo norma.jpg';
 
 // Images from Unsplash - Luxury Scents/Cosmetics vibe
 const IMAGES = {
@@ -108,7 +108,7 @@ function Home() {
         <Process t={t} />
         <Quality t={t} />
         <Partners t={t} />
-        <Contact t={t} />
+        <Contact t={t} lang={lang} />
       </main>
 
       {/* Footer */}
@@ -119,6 +119,7 @@ function Home() {
         {showPopup && (
           <ContactPopup 
             t={t} 
+            lang={lang}
             onClose={() => {
               setShowPopup(false);
               setPopupDismissed(true);
@@ -163,15 +164,13 @@ function Navbar({ lang, toggleLang, isScrolled, t }: { lang: string, toggleLang:
         </a>
 
         {/* Desktop Links - Centered */}
-        <div className="hidden lg:flex items-center space-x-8 text-[13px] font-bold tracking-tight text-white/70">
+        <div className="hidden lg:flex items-center space-x-12 text-[13px] font-bold tracking-tight text-white/70">
           {['brands', 'expertise', 'lab'].map((item) => (
             <a key={item} href={`#${item}`} className="hover:text-white transition-colors duration-300">
               {t.nav[item as keyof typeof t.nav]}
             </a>
           ))}
-          <a href="#" className="hover:text-white transition-colors">Resources</a>
-          <Link to="/expertise" className="hover:text-white transition-colors">Enterprise</Link>
-          <a href="#" className="hover:text-white transition-colors">Pricing</a>
+          <a href="#contact" className="hover:text-white transition-colors duration-300">Contact</a>
         </div>
 
         {/* Right Side Tools */}
@@ -400,8 +399,8 @@ function Expertise({ t }: { t: Translation }) {
   return (
     <section id="expertise" className="py-32 bg-[#F8F9FA] px-6">
       <div className="max-w-7xl mx-auto text-center mb-24">
-        <h2 className="text-3xl md:text-4xl font-sans font-black mb-4 text-gray-900 tracking-tight">{t.expertise.title}</h2>
-        <p className="text-gray-500 font-medium text-lg">{t.expertise.subtitle}</p>
+        <SectionTitle>{t.expertise.title}</SectionTitle>
+        <p className="text-gray-500 font-medium text-lg mt-8">{t.expertise.subtitle}</p>
       </div>
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
@@ -429,23 +428,22 @@ function Expertise({ t }: { t: Translation }) {
                )}
                {i === 1 && (
                  <div className="text-white">
-                   <Share2 size={40} strokeWidth={2} />
+                   <Share2 size={40} strokeWidth={1.5} />
                  </div>
                )}
                {i === 2 && (
-                 <div className="text-white relative">
-                   <Trophy size={40} strokeWidth={2} />
-                   <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[10px] font-black mt-0.5">1</span>
+                 <div className="text-white">
+                   <Trophy size={40} strokeWidth={1.5} />
                  </div>
                )}
                {i === 3 && (
                  <div className="text-white">
-                   <Heart size={40} fill="currentColor" />
+                   <Heart size={40} strokeWidth={1.5} fill="currentColor" />
                  </div>
                )}
             </div>
 
-            <h3 className="text-xl font-bold mb-6 text-gray-900 tracking-tight">{item.title}</h3>
+            <h3 className="text-xl font-bold mb-6 text-gray-900 tracking-tight uppercase">{item.title}</h3>
             <p className="text-gray-500 leading-relaxed text-[15px] font-normal px-4">
               {item.desc}
             </p>
@@ -463,27 +461,30 @@ function Brands({ t }: { t: Translation }) {
     { 
       name: "Arsène Valère", 
       atmosphere: t.brands.brand1.atmosphere, 
+      logo: brandLogo1,
       img: IMAGES.brand1,
-      theme: "brand-portal-dermaly",
-      tagline: "Precision & Science",
-      bg: "bg-white",
-      accent: "text-gray-900"
+      theme: "brand-portal-arsene",
+      tagline: "Science & Sensorialité",
+      bg: "bg-[#1B3022]", // Dark Forest Green from the logo image
+      accent: "text-sage-light"
     },
     { 
       name: "Norma de Durville", 
       atmosphere: t.brands.brand2.atmosphere, 
+      logo: brandLogo2,
       img: IMAGES.brand2,
-      theme: "brand-portal-elixir",
-      tagline: "Expertise Cire",
-      bg: "bg-black",
-      accent: "text-[#c5a059]"
+      theme: "brand-portal-norma",
+      tagline: "Expertise Cire d'Excellence",
+      bg: "bg-[#4D69B4]", // Accurate blue from the logo image
+      accent: "text-white"
     },
     { 
       name: "HYLU", 
       atmosphere: t.brands.brand3.atmosphere, 
+      logo: null,
       img: IMAGES.brand3,
-      theme: "brand-portal-purete",
-      tagline: "Hydratation Intense",
+      theme: "brand-portal-hylu",
+      tagline: "Hydratation Source de Vie",
       bg: "bg-[#f2f4ef]",
       accent: "text-sage"
     },
@@ -537,9 +538,21 @@ function Brands({ t }: { t: Translation }) {
               <p className={`text-[10px] font-bold uppercase tracking-widest ${brand.accent}`}>
                 {brand.atmosphere}
               </p>
-              <h3 className={`text-4xl md:text-5xl lg:text-7xl font-serif text-white leading-none`}>
-                {brand.name}
-              </h3>
+              
+              {brand.logo ? (
+                <div className="h-16 md:h-24 w-auto flex items-start">
+                  <img 
+                    src={brand.logo} 
+                    alt={brand.name} 
+                    className="h-full w-auto object-contain filter brightness-0 invert" 
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+              ) : (
+                <h3 className={`text-4xl md:text-5xl lg:text-7xl font-serif text-white leading-none`}>
+                  {brand.name}
+                </h3>
+              )}
               
               <AnimatePresence>
                 {activePortal === i && (
@@ -720,7 +733,14 @@ function Partners({ t }: { t: Translation }) {
   );
 }
 
-function Contact({ t }: { t: Translation }) {
+function Contact({ t, lang }: { t: Translation, lang: 'fr' | 'en' }) {
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitted(true);
+  };
+
   return (
     <section id="contact" className="py-32 px-6 bg-sage-light relative overflow-hidden">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-stretch gap-20">
@@ -745,37 +765,77 @@ function Contact({ t }: { t: Translation }) {
         </div>
 
         <div className="flex-[1.5]">
-          <form className="bg-white p-12 shadow-xl border border-gray-100">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-              <div className="flex flex-col space-y-2">
-                <label className="text-[10px] font-bold uppercase tracking-widest text-gray-400">{t.contact.name}</label>
-                <input type="text" className="border-b border-gray-200 py-3 focus:outline-none focus:border-sage transition-colors" />
-              </div>
-              <div className="flex flex-col space-y-2">
-                <label className="text-[10px] font-bold uppercase tracking-widest text-gray-400">{t.contact.email}</label>
-                <input type="email" className="border-b border-gray-200 py-3 focus:outline-none focus:border-sage transition-colors" />
-              </div>
-            </div>
-            <div className="flex flex-col space-y-2 mb-12 min-h-[250px]">
-              <label className="text-[10px] font-bold uppercase tracking-widest text-gray-400">{t.contact.message}</label>
-              <ReactQuill 
-                theme="snow"
-                className="luxury-quill"
-                placeholder="..."
-              />
-            </div>
-            <button className="w-full bg-gray-900 hover:bg-sage text-white text-xs font-bold uppercase tracking-widest py-6 transition-all duration-500 flex items-center justify-center space-x-4">
-              <span>{t.contact.send}</span>
-              <Send size={14} />
-            </button>
-          </form>
+          <AnimatePresence mode="wait">
+            {!isSubmitted ? (
+              <motion.form 
+                key="contact-form"
+                initial={{ opacity: 1 }}
+                exit={{ opacity: 0, y: -20 }}
+                onSubmit={handleSubmit}
+                className="bg-white p-12 shadow-xl border border-gray-100"
+              >
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                  <div className="flex flex-col space-y-2">
+                    <label className="text-[10px] font-bold uppercase tracking-widest text-gray-400">{t.contact.name}</label>
+                    <input required type="text" className="border-b border-gray-200 py-3 focus:outline-none focus:border-sage transition-colors" />
+                  </div>
+                  <div className="flex flex-col space-y-2">
+                    <label className="text-[10px] font-bold uppercase tracking-widest text-gray-400">{t.contact.email}</label>
+                    <input required type="email" className="border-b border-gray-200 py-3 focus:outline-none focus:border-sage transition-colors" />
+                  </div>
+                </div>
+                <div className="flex flex-col space-y-2 mb-12 min-h-[250px]">
+                  <label className="text-[10px] font-bold uppercase tracking-widest text-gray-400">{t.contact.message}</label>
+                  <ReactQuill 
+                    theme="snow"
+                    className="luxury-quill"
+                    placeholder="..."
+                  />
+                </div>
+                <button type="submit" className="w-full bg-gray-900 hover:bg-sage text-white text-xs font-bold uppercase tracking-widest py-6 transition-all duration-500 flex items-center justify-center space-x-4">
+                  <span>{t.contact.send}</span>
+                  <Send size={14} />
+                </button>
+              </motion.form>
+            ) : (
+              <motion.div 
+                key="contact-success"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="bg-white p-12 shadow-xl border border-gray-100 h-full flex flex-col items-center justify-center text-center space-y-8"
+              >
+                <div className="w-20 h-20 rounded-full bg-sage/10 flex items-center justify-center text-sage">
+                  <Heart size={40} fill="currentColor" />
+                </div>
+                <div className="space-y-4">
+                  <h3 className="text-2xl font-serif">{t.contact.success.split('.')[0]}.</h3>
+                  <p className="text-gray-500 max-w-sm mx-auto leading-relaxed">
+                    {t.contact.success.split('.').slice(1).join('.')}
+                  </p>
+                </div>
+                <button 
+                  onClick={() => setIsSubmitted(false)}
+                  className="text-[10px] font-bold uppercase tracking-widest text-sage hover:text-black transition-colors"
+                >
+                  {lang === 'fr' ? 'Envoyer un autre message' : 'Send another message'}
+                </button>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </section>
   );
 }
 
-function ContactPopup({ t, onClose }: { t: Translation, onClose: () => void }) {
+function ContactPopup({ t, onClose, lang }: { t: Translation, onClose: () => void, lang: 'fr' | 'en' }) {
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitted(true);
+  };
+
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center px-6">
       <motion.div 
@@ -802,34 +862,66 @@ function ContactPopup({ t, onClose }: { t: Translation, onClose: () => void }) {
         </div>
 
         <div className="flex-1 p-8 md:p-12 bg-white flex flex-col justify-center">
-          <h3 className="text-3xl font-serif mb-4">{t.popup.title}</h3>
-          <p className="text-gray-500 mb-8 leading-relaxed text-sm">{t.popup.subtitle}</p>
-          
-          <form className="space-y-4 mb-4">
-             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-               <div className="flex flex-col space-y-1">
-                 <label className="text-[10px] font-bold uppercase tracking-widest text-gray-400">{t.contact.name}</label>
-                 <input type="text" placeholder="..." className="w-full border-b border-gray-200 py-2 focus:outline-none focus:border-sage transition-colors text-sm" />
-               </div>
-               <div className="flex flex-col space-y-1">
-                 <label className="text-[10px] font-bold uppercase tracking-widest text-gray-400">{t.contact.email}</label>
-                 <input type="email" placeholder="email@exemple.com" className="w-full border-b border-gray-200 py-2 focus:outline-none focus:border-sage transition-colors text-sm" />
-               </div>
-             </div>
-             
-             <div className="flex flex-col space-y-1">
-               <label className="text-[10px] font-bold uppercase tracking-widest text-gray-400">{t.contact.message}</label>
-               <textarea 
-                 rows={3} 
-                 placeholder="..." 
-                 className="w-full border-b border-gray-200 py-2 focus:outline-none focus:border-sage transition-colors text-sm resize-none"
-               />
-             </div>
+          <AnimatePresence mode="wait">
+            {!isSubmitted ? (
+              <motion.div 
+                key="popup-form"
+                initial={{ opacity: 1 }}
+                exit={{ opacity: 0, x: -20 }}
+              >
+                <h3 className="text-3xl font-serif mb-4">{t.popup.title}</h3>
+                <p className="text-gray-500 mb-8 leading-relaxed text-sm">{t.popup.subtitle}</p>
+                
+                <form onSubmit={handleSubmit} className="space-y-4 mb-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="flex flex-col space-y-1">
+                      <label className="text-[10px] font-bold uppercase tracking-widest text-gray-400">{t.contact.name}</label>
+                      <input required type="text" placeholder="..." className="w-full border-b border-gray-200 py-2 focus:outline-none focus:border-sage transition-colors text-sm" />
+                    </div>
+                    <div className="flex flex-col space-y-1">
+                      <label className="text-[10px] font-bold uppercase tracking-widest text-gray-400">{t.contact.email}</label>
+                      <input required type="email" placeholder="email@exemple.com" className="w-full border-b border-gray-200 py-2 focus:outline-none focus:border-sage transition-colors text-sm" />
+                    </div>
+                  </div>
+                  
+                  <div className="flex flex-col space-y-1">
+                    <label className="text-[10px] font-bold uppercase tracking-widest text-gray-400">{t.contact.message}</label>
+                    <textarea 
+                      required
+                      rows={3} 
+                      placeholder="..." 
+                      className="w-full border-b border-gray-200 py-2 focus:outline-none focus:border-sage transition-colors text-sm resize-none"
+                    />
+                  </div>
 
-             <button type="button" className="w-full bg-gray-900 py-4 text-white text-xs font-bold uppercase tracking-widest hover:bg-sage transition-all duration-500 rounded-lg mt-4">
-               {t.popup.cta}
-             </button>
-          </form>
+                  <button type="submit" className="w-full bg-gray-900 py-4 text-white text-xs font-bold uppercase tracking-widest hover:bg-sage transition-all duration-500 rounded-lg mt-4">
+                    {t.popup.cta}
+                  </button>
+                </form>
+              </motion.div>
+            ) : (
+              <motion.div 
+                key="popup-success"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                className="text-center py-12"
+              >
+                <div className="w-16 h-16 rounded-full bg-sage/10 flex items-center justify-center text-sage mx-auto mb-8">
+                  <Heart size={32} fill="currentColor" />
+                </div>
+                <h3 className="text-2xl font-serif mb-4">{t.popup.success.split('!')[0]}!</h3>
+                <p className="text-gray-500 leading-relaxed text-sm mb-8">
+                  {t.popup.success.split('!').slice(1).join('!')}
+                </p>
+                <button 
+                  onClick={onClose}
+                  className="bg-gray-900 text-white px-8 py-3 text-[10px] font-bold uppercase tracking-widest rounded-lg hover:bg-sage transition-colors"
+                >
+                  {lang === 'fr' ? 'Fermer' : 'Close'}
+                </button>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </motion.div>
     </div>
